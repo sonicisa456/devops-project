@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Infraestructura para proyecto DevOps (EC2 + S3)
+
+Resources:
+
+  DevOpsInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c02fb55956c7d316
+      SecurityGroups:
+        - !Ref DevOpsSecurityGroup
+
+  DevOpsSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Permitir acceso a la aplicación web
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 8080
+          ToPort: 8080
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 3000
+          ToPort: 3000
+          CidrIp: 0.0.0.0/0
+
+  DevOpsBucket:
+    Type: AWS::S3::Bucket
+
+# IMPORTANTE:
+# En producción NO se debe usar 0.0.0.0/0 ya que permite acceso desde cualquier IP.
+# Se recomienda restringir el acceso solo a IPs específicas
