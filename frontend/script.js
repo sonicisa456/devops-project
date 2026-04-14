@@ -1,9 +1,9 @@
-const API = "http://54.81.100.41:3000";
+const API = "";
 
 async function send() {
     const text = document.getElementById("input").value;
 
-    await fetch(API + "/query", {
+    await fetch("/query", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({ text })
@@ -13,7 +13,7 @@ async function send() {
 }
 
 async function load() {
-    const res = await fetch(API + "/queries");
+    const res = await fetch("/queries");
     const data = await res.json();
 
     const list = document.getElementById("list");
