@@ -19,7 +19,7 @@ function log(message) {
 }
 
 // Conexión a Mongo (luego Docker lo hará funcionar)
-mongoose.connect("mongodb://mongo:27017/queries");
+mongoose.connect("mongodb://mongo:27017/test");
 
 const Query = mongoose.model("Query", {
     text: String,
