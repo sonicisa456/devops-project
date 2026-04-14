@@ -1,4 +1,4 @@
-const API = "http://localhost:3000";
+const API = "http://backend:3000";
 
 async function send() {
     const text = document.getElementById("input").value;
