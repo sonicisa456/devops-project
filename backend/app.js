@@ -43,8 +43,8 @@ app.post("/query", async (req, res) => {
 
 // GET
 app.get("/queries", async (req, res) => {
-    const queries = await Query.find();
-    res.json(queries);
+    const data = await Query.find();
+    res.json(data);
 });
 
 app.listen(3000, () => {
