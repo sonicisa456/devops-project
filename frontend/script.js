@@ -1,4 +1,4 @@
-const API = "";
+const API = `http://${window.location.hostname}:3000`;
 
 async function send() {
     const text = document.getElementById("input").value;
