@@ -19,7 +19,9 @@ function log(message) {
 }
 
 // Conexión a Mongo (luego Docker lo hará funcionar)
-mongoose.connect("mongodb://mongo:27017/test");
+mongoose.connect("mongodb://mongo:27017/bitacora")
+.then(() => console.log("Mongo conectado"))
+.catch(err => console.log("Error Mongo:", err));
 
 const Query = mongoose.model("Query", {
     text: String,
