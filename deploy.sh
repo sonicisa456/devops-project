@@ -1,14 +1,12 @@
 #!/bin/bash
 
-echo "Clonando repositorio..."
-git clone https://github.com/tu-usuario/tu-repo.git app
+echo "Actualizando proyecto..."
+git pull
 
-cd app
+echo "Deteniendo contenedores..."
+docker-compose down
 
-echo "Construyendo contenedores..."
-docker-compose build
+echo "Construyendo y levantando..."
+DOCKER_BUILDKIT=0 docker-compose up -d --build
 
-echo "Levantando aplicación..."
-docker-compose up -d
-
-echo "Aplicación desplegada"
+echo "Aplicación desplegada correctamente"
